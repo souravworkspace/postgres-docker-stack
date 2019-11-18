@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  postgresql:
+    image: postgres:11.2
+    ports:
+      - 5432:5432
+    volumes:
+      - ./dev/postgresql/data:/var/lib/postgresql/data
+      - /dev/hugepages:/dev/hugepages
+    environment:
+      POSTGRES_USER: ccart
+      POSTGRES_DB: tracker
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 2048M
+  pgadmin:
+    image: dpage/pgadmin4:4.6
+    logging:
+      driver: none
+    ports:
+      - 8086:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.com
+      PGADMIN_DEFAULT_PASSWORD: password
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '9000:3000'
+
+  prom_postgres_exporter:
+    image: wrouesnel/postgres_exporter:v0.7.0
+
+    ports:
+      - '9187:9187'
+    environment:
+      DATA_SOURCE_NAME: postgresql://ccart:@tr1.convertcart.com:5432/tracker?sslmode=disable
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+    ports:
+      - 9090:9090

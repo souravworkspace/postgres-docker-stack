@@ -1,0 +1,49 @@
+Arguments: 
+  /home/saurav/.nvm/versions/node/v11.11.0/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/saurav/.local/bin:/home/saurav/.nvm/versions/node/v11.11.0/bin:/home/saurav/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  11.11.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/saurav/Documents/Testing/postgres-benchmark/package.json: Unexpected token } in JSON at position 121
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1631:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:304:30)
+      at /usr/share/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "dependencies": {
+      "bluebird": "^3.5.5",
+      "lodash": "^4.17.14",
+      "nanoid": "^2.0.3",
+      "pg": "^7.11.0",
+    },
+    "scripts": {
+      "dev": "nodemon",
+      "build": "tsc"
+    },
+    "devDependencies": {
+      "@types/bluebird": "^3.5.27",
+      "@types/lodash": "^4.14.136",
+      "@types/nanoid": "^2.0.0",
+      "@types/pg": "^7.4.14",
+      "typescript": "^3.5.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
